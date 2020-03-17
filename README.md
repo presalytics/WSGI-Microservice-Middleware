@@ -72,7 +72,7 @@ Implements Request Id handling for requests that need to be tracked accross mult
 The `RequestIdMiddleware` class.
 
 To extend the request Id to your application logs, incorporate the `RequestIdFilter` into your logging configuration. the best way to do this
-is to use `logging.dictConfig` to apply the filter to all of your handlers:
+is to use `logging.config.dictConfig` to apply the filter to all of your handlers:
 
 ~~~~python
 # log_config.py
@@ -84,7 +84,7 @@ dictConfig({
     'version': 1,
     'filters': {
         'request_id_filter' : {
-            '()': RequestIdFilter,
+            '()': RequestIdFilter,  # RequestIdFilter.filter(self, record) called with each log entry
         }
 
     },
@@ -95,7 +95,7 @@ dictConfig({
         'wsgi': {
             'class': 'logging.StreamHandler',
             'formatter': 'default',
-            'filters': ['request_id_filter']
+            'filters': ['request_id_filter']  # add this filter to each handler
         },
     },
     'root': {
