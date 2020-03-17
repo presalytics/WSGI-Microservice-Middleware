@@ -55,7 +55,7 @@ class RequestIdMiddleware(object):
 
 def current_request_id():
     """
-    Retrives the current request id from the wsgi `environ` in buried in the call stack
+    Retrives the current request id from the wsgi `environ` buried in the call stack
     """
     _req = None
     wsgi_header = "HTTP_" + REQUEST_ID_HEADER_NAME.replace("-","_").upper()
