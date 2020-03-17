@@ -21,7 +21,7 @@ VERSION = "0.1.0"
 
 REQUIRES = [
     "urllib3 >= 1.15",
-    "environs >= 7.3.0",
+    "environs >= 4.2.0",
 ]
 
 with open("readme.md", "r") as fh:
