@@ -98,17 +98,17 @@ class RequestIdFilter(logging.Filter):
 
 class RequestIdJsonLogFormatter(pythonjsonlogger.jsonlogger.JsonFormatter):
     def add_fields(self, log_record, record, message_dict):
-        super(CustomJsonFormatter, self).add_fields(log_record, record, message_dict)
+        super(RequestIdJsonLogFormatter, self).add_fields(log_record, record, message_dict)
         if not log_record.get('timestamp'):
             # this doesn't use record.created, so it is slightly off
-            now = datetime.datetime.utcfromtimestamp().astimezone(tz=datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+            now = datetime.datetime.utcnow().astimezone(tz=datetime.timezone.utc).isoformat()
             log_record['timestamp'] = now
         if log_record.get('level'):
             log_record['level'] = log_record['level'].upper()
         else:
             log_record['level'] = record.levelname
-
-
-base_json_log_formatter = CustomJsonFormatter('(timestamp) (threadName) (level) (name) (request_id) (message)')
-
+        if not log_record.get('name'):
+            log_record['name'] = record.name
+        if not log_record.get('threadName'):
+            log_record['threadName'] = record.threadName
 

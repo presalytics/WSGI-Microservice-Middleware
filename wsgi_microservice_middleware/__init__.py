@@ -8,7 +8,6 @@ from wsgi_microservice_middleware.request_id import (
     RequestIdFilter, 
     RequestIdMiddleware, 
     current_request_id,
-    base_json_log_formatter,
     RequestIdJsonLogFormatter
 )
 
