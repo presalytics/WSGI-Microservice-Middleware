@@ -15,6 +15,7 @@ VERSION = "0.1.0"
 REQUIRES = [
     "urllib3 >= 1.15",
     "environs >= 4.2.0",
+    "python-json-logger >=0.1.11"
 ]
 
 with open("README.md", "r") as fh:

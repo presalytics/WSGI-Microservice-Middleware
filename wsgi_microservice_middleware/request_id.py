@@ -3,6 +3,8 @@ Middleware and logging filter to add request ids to logs and forward request Ids
 """
 import logging
 import traceback
+import datetime
+import pythonjsonlogger
 import wsgi_microservice_middleware
 
 
@@ -91,5 +93,21 @@ class RequestIdFilter(logging.Filter):
         else: 
             request_id = "No Request Id"
         return request_id
+
+
+class RequestIdJsonLogFormatter(pythonjsonlogger.jsonlogger.JsonFormatter):
+    def add_fields(self, log_record, record, message_dict):
+        super(CustomJsonFormatter, self).add_fields(log_record, record, message_dict)
+        if not log_record.get('timestamp'):
+            # this doesn't use record.created, so it is slightly off
+            now = datetime.datetime.utcfromtimestamp().astimezone(tz=datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+            log_record['timestamp'] = now
+        if log_record.get('level'):
+            log_record['level'] = log_record['level'].upper()
+        else:
+            log_record['level'] = record.levelname
+
+
+base_json_log_formatter = CustomJsonFormatter('(timestamp) (threadName) (level) (name) (request_id) (message)')
 
 

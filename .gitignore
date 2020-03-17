@@ -432,3 +432,9 @@ appsettings.json
 
 .mypy_cache/
 integration_test/token.json
+
+# python
+
+build/
+dist/
+*.egg-info
