@@ -39,7 +39,7 @@ class RequestIdMiddleware(object):
                 environ.get("SERVER_PROTOCOL", ""),
                 status
             ]
-            message = " : ".join(FACTS)
+            message = " | ".join(FACTS)
             request_id = environ.get(self.wsgi_header_key, 'No Request Id')
             adpater = logging.LoggerAdapter(logger, extra={"request_id": request_id})
             adpater.info(message)
