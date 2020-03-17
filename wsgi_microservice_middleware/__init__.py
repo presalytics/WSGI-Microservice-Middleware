@@ -7,7 +7,8 @@ from wsgi_microservice_middleware.cors import CORSMiddleware
 from wsgi_microservice_middleware.request_id import (
     RequestIdFilter, 
     RequestIdMiddleware, 
-    current_request_id
+    current_request_id,
+    base_json_log_formatter
 )
 
 __all__ = [
