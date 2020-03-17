@@ -9,7 +9,7 @@ Middlewares in this package include:
 
 This project spun out of development for the Presalytics as way to quickly port code across various microserivces built on wsgi-supported frameworks.
 
-[View on Github](https://github.com/presalytics/wsgi_microserice_middleware)
+[View on Github](https://github.com/presalytics/WSGI-Microservice-Middleware)
 
 ### Installation
 
@@ -21,7 +21,7 @@ pip install wsgi_microservice_middleware
 
 The latest branch of this package can also be installed from git:
 ~~~~bash
-pip install git+https://github.com/presalytics/wsgi_microservice_middleware@next
+pip install git+https://github.com/presalytics/WSGI-Microservice-Middleware
 ~~~~
 
 ### Configuration
@@ -110,4 +110,4 @@ incorporate it into your request headers.
 
 # Contributing
 
-We'd love your help! Open an issue at on the [github repo](https://github.com/presalytics/wsgi_microserice_middleware).
+We'd love your help! Open an issue at the [github repo](https://github.com/presalytics/WSGI-Microservice-Middleware/issues).  Or even better, you can fork the repo and we'll merge your improvements.

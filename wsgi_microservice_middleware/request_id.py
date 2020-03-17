@@ -22,8 +22,7 @@ class RequestIdMiddleware(object):
     the request Id in int he response headers
     """
     def __init__(self, app, header_name: str = None):
-        if header_name:
-            self.header_name = header_name
+        self.header_name = header_name
         if not self.header_name:
             self.header_name = REQUEST_ID_HEADER_NAME
         self.wsgi_header_key = make_wsgi_header_key(self.header_name)
@@ -46,7 +45,7 @@ class RequestIdMiddleware(object):
             adpater.info(message)
 
 
-            headers.update({self.header_name, request_id})
+            headers.append((self.header_name, request_id,))
 
             return start_response(status, headers, exc_info)
 
@@ -82,11 +81,11 @@ class RequestIdFilter(logging.Filter):
         super().__init__(*args, **kwargs)
 
     def filter(self, record):
-        record.request_id = current_request_id()
+        record.request_id = self.get_current_request_id()
         return True
 
     def get_current_request_id(self):
-        _req = self.get_current_request_id()
+        _req = current_request_id()
         if _req:
             request_id = _req
         else: 
