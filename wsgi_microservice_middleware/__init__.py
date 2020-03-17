@@ -13,10 +13,12 @@ from wsgi_microservice_middleware.request_id import (
 )
 
 __all__ = [
+    
     'CORSMiddleware',
     'RequestIdFilter', 
     'RequestIdMiddleware', 
     'current_request_id',
     'RequestIdJsonLogFormatter'
+
 ]
 
