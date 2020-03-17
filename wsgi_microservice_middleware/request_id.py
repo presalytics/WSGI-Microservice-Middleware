@@ -5,6 +5,7 @@ import logging
 import traceback
 import datetime
 import pythonjsonlogger
+import pythonjsonlogger.jsonlogger
 import wsgi_microservice_middleware
 
 
