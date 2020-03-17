@@ -3,7 +3,7 @@ import logging
 import wsgi_microservice_middleware
 
 
-CORS_ALLOWED = wsgi_microservice_middleware.env.list("CORS_ALLOWED")
+CORS_ALLOWED = wsgi_microservice_middleware.env.list("CORS_ALLOWED", tuple())
 
 
 logger = logging.getLogger(__name__)

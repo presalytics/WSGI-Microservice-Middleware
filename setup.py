@@ -7,7 +7,7 @@ Simple middlewares to help move microservices into production
 """
 
 
-from setuptools import setup, find_packages  # noqa: H301
+from setuptools import setup, find_packages, Extension  # noqa: H301
 
 NAME = "wsgi_microservice_middleware"
 VERSION = "0.1.1"
@@ -49,6 +49,6 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware",
         "Natural Language :: English", 
-        "Development Status :: 4 - Beta",
+        "Development Status :: 4 - Beta"
     ]
 )

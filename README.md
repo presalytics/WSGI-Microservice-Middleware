@@ -86,7 +86,6 @@ dictConfig({
         'request_id_filter' : {
             '()': RequestIdFilter,  # RequestIdFilter.filter(self, record) called with each log entry
         }
-
     },
     'formatters': {'default': {
         'format': '%(asctime)s - %(threadName)s - %(name)s - %(levelname)s - %(request_id)s -  %(message)s',
@@ -105,8 +104,7 @@ dictConfig({
 })
 ~~~~
 
-If your microservice makes requests to other microservices, you can call the `current_request_id()` method to get the current request id and 
-incorporate it into your request headers.
+If your microservice makes requests to other microservices, you can call the `current_request_id()` method to get the current request id and incorporate it into your request headers.
 
 # Contributing
 
