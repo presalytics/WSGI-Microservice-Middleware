@@ -37,5 +37,17 @@ setup(
     python_requires=">=3.5",
     project_urls = {
         "Issues": "https://github.com/presalytics/WSGI-Microservice-Middleware/issues"
-    }
+    },
+    classifiers = [
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware",
+        "Natural Language :: English", 
+        "Development Status :: 4 - Beta",
+    ]
 )
