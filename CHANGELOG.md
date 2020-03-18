@@ -1,3 +1,7 @@
+# v0.1.4 (2020-03-18)
+
+* Fix `extra` bug
+
 # v0.1.3 (2020-03-18)
 
 * Add tokens to request logs with `LOG_TOKENS` variable

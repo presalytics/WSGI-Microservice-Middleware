@@ -57,7 +57,7 @@ class RequestIdMiddleware(object):
                 except Exception:
                     # No exception log, requst missing token
                     pass
-            adpater = logging.LoggerAdapter(logger, extra={"request_id": request_id})
+            adpater = logging.LoggerAdapter(logger, extra=extra)
             adpater.info(message)
 
 
