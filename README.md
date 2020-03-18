@@ -32,6 +32,8 @@ Package configuration is best done by adding configuration values via environmen
 
 * `REQUEST_ID_HEADER`: The http request header containing a the request-id to including in logs. If not supplied, defaults to `X-Request-Id`.
 
+* `LOG_TOKENS`: Instructs `RequestIdMiddleware` to add Bearer Authentication tokens to request logs when available. Defaults to True.
+
 ### Usage 
 
 These middleware are applied by wrapping the wsgi application object in you code by the middleware class. Examples below:

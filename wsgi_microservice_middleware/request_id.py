@@ -2,6 +2,7 @@
 Middleware and logging filter to add request ids to logs and forward request Ids in downstream requests
 """
 import logging
+import re
 import traceback
 import datetime
 import pythonjsonlogger
@@ -13,6 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 REQUEST_ID_HEADER_NAME = wsgi_microservice_middleware.env.str("REQUEST_ID_HEADER", "X-Request-Id")
+LOG_TOKENS = wsgi_microservice_middleware.env.bool("LOG_TOKENS", True)
 
 
 def make_wsgi_header_key(header: str):
@@ -43,7 +45,18 @@ class RequestIdMiddleware(object):
                 status
             ]
             message = " | ".join(FACTS)
-            request_id = environ.get(self.wsgi_header_key, 'No Request Id')
+            request_id = environ.get(self.wsgi_header_key, '""')
+            extra = {"request_id": request_id}
+            token = None
+            if LOG_TOKENS:
+                try:
+                    auth_header = environ.get("HTTP_AUTHORIZATION", None)
+                    token = re.sub(r"\W", "", auth_header.lstrip("Bearer"))
+                    if token:
+                        extra.update({"token": token})
+                except Exception:
+                    # No exception log, requst missing token
+                    pass
             adpater = logging.LoggerAdapter(logger, extra={"request_id": request_id})
             adpater.info(message)
 
