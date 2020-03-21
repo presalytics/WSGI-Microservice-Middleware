@@ -10,7 +10,7 @@ Simple middlewares to help move microservices into production
 from setuptools import setup, find_packages, Extension  # noqa: H301
 
 NAME = "wsgi_microservice_middleware"
-VERSION = "0.1.4"
+VERSION = "0.1.5"
 
 REQUIRES = [
     "urllib3 >= 1.15",

@@ -105,7 +105,7 @@ class RequestIdFilter(logging.Filter):
         if _req:
             request_id = _req
         else: 
-            request_id = "No Request Id"
+            request_id = ""
         return request_id
 
 

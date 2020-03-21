@@ -1,3 +1,7 @@
+# v0.1.5 (2020-03-21)
+
+* Set Default Request Id in Logging filter to empty string
+
 # v0.1.4 (2020-03-18)
 
 * Fix `extra` bug
