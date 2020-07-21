@@ -1,3 +1,7 @@
+# v0.1.6 (2020-07-21)
+
+* Enable ACCESS-CONTROL-ALLOW-CREDENTIALS
+
 # v0.1.5 (2020-03-21)
 
 * Set Default Request Id in Logging filter to empty string

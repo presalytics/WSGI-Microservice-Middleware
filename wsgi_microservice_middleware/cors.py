@@ -24,12 +24,17 @@ class CORSMiddleware(object):
             # append whatever headers you need here
             origin = urllib.parse.urlparse(environ.get('HTTP_ORIGIN'))
             if origin.netloc in CORS_ALLOWED:
-                logger.info("Cross-origin request approved for request origin {0}".format(origin))
-                headers.append(('Access-Control-Allow-Origin', '*'))
+                logger.info("Cross-origin request approved for request origin {0}".format(origin.netloc))
                 headers.append(
-                    ('Access-Control-Allow-Headers', '*')
+                    ('Access-Control-Allow-Origin', environ.get('HTTP_ORIGIN', '*'))
+                )
+                headers.append(
+                    ('Access-Control-Allow-Headers', environ.get('HTTP_ACCESS_CONTROL_REQUEST_HEADERS', '*'))
                 )
                 headers.append(('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, HEAD, OPTIONS'))
+                headers.append(
+                    ('Access-Control-Allow-Credentials', 'true')
+                )
             return start_response(status, headers, exc_info)
 
         return self.app(environ, custom_start_response)
